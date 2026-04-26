@@ -1,0 +1,20 @@
+{
+	"GulpfileConfiguration":
+	{
+		"EntrypointInputSourceFile": "{~Data:AppData.CWD~}/source/Pict-Application-UserMgmtDemo.js",
+		"LibraryObjectName": "PictSectionUserManagementDemo",
+		"LibraryOutputFolder": "{~Data:AppData.CWD~}/dist/",
+		"LibraryUniminifiedFileName": "pict-section-usermanagement-demo.js",
+		"LibraryMinifiedFileName": "pict-section-usermanagement-demo.min.js",
+		"BrowserifyIgnore": []
+	},
+	"GulpExecutions":
+	[
+		{
+			"Hash": "default",
+			"Name": "Default standard build.",
+			"BuildFileLabel": "",
+			"BrowsersListRC": "since 2022"
+		}
+	]
+}

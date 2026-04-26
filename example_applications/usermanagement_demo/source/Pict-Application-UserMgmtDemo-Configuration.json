@@ -1,0 +1,15 @@
+{
+	"Name": "Pict User Management Demo",
+	"Hash": "UserMgmtDemo",
+
+	"MainViewportViewIdentifier": "UserMgmtDemo-Layout",
+
+	"AutoSolveAfterInitialize": true,
+	"AutoRenderMainViewportViewAfterInitialize": false,
+	"AutoRenderViewsAfterInitialize": false,
+
+	"pict_configuration":
+		{
+			"Product": "PictSection-UserManagement-Demo"
+		}
+}

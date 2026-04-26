@@ -1,0 +1,26 @@
+{
+	"name": "pict-section-usermanagement",
+	"version": "0.0.1",
+	"description": "Pict user-management section — login, current-user badge, user list/edit, password change. Backed by orator-authentication's session routes plus the auth-beacon /Users CRUD surface.",
+	"main": "source/Pict-Section-UserManagement.js",
+	"scripts": {
+		"test": "npx mocha -u tdd --exit --timeout 10000 ./test/*_tests*"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/stevenvelozo/pict-section-usermanagement.git"
+	},
+	"keywords": [
+		"pict",
+		"authentication",
+		"users",
+		"login",
+		"orator-authentication"
+	],
+	"author": "Steven Velozo <steven@velozo.com>",
+	"license": "MIT",
+	"dependencies": {
+		"pict-provider": "^1.0.12",
+		"pict-view": "^1.0.68"
+	}
+}

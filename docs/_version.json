@@ -1,0 +1,7 @@
+{
+	"Name": "pict-section-usermanagement",
+	"Version": "1.0.1",
+	"Description": "Pict user-management section — login, current-user badge, user list/edit, password change. Backed by orator-authentication's session routes plus the auth-beacon /Users CRUD surface.",
+	"GeneratedAt": "2026-05-31T01:22:54.077Z",
+	"GitCommit": "f880f0a"
+}

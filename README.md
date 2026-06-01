@@ -2,7 +2,7 @@
 
 > **[Read the Pict-Section-UserManagement Documentation](https://fable-retold.github.io/pict-section-usermanagement/)** - interactive docs with the full API and usage reference.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[MIT License](LICENSE)
 
 ---
 

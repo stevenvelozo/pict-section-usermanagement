@@ -1,0 +1,23 @@
+sequenceDiagram
+	participant User
+	participant View as Login view
+	participant Prov as Provider
+	participant API as Auth API
+	participant AD as AppData
+
+	User->>View: enter credentials + submit
+	View->>View: validate non-empty, set submitting
+	View->>Prov: login(username, password)
+	Prov->>AD: Loading.CurrentUser = true
+	Prov->>API: POST Authenticate { UserName, Password }
+	API-->>Prov: { LoggedIn, UserID, UserRecord }
+	alt LoggedIn = true
+		Prov->>AD: CurrentUser = body
+		Prov-->>View: callback(null, body)
+		View->>View: success message, clear password
+		View->>View: options.OnLogin(body)  [host hook]
+	else LoggedIn = false / error
+		Prov->>AD: LastError = {...}
+		Prov-->>View: callback(error)
+		View->>View: error message
+	end

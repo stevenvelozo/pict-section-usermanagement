@@ -1,0 +1,38 @@
+graph TB
+	subgraph "Host Pict Application"
+		APP["PictApplication"]
+		APPDATA["AppData.UserManagement<br/>(CurrentUser / AllUsers /<br/>SelectedUser / LastError / Loading)"]
+		MODAL["pict-section-modal<br/>(confirm / prompt / toast)"]
+	end
+
+	subgraph "pict-section-usermanagement"
+		PROV["Pict-Provider-UserManagement<br/>(extends pict-provider)"]
+		VLOGIN["Login view"]
+		VCUR["CurrentUser view"]
+		VLIST["UserList view"]
+		VEDIT["UserEdit view"]
+		VPASS["PasswordChange view"]
+		CSS["Shared CSS (.pict-um-*)"]
+	end
+
+	subgraph "Backend"
+		AUTH["orator-authentication<br/>Authenticate / Deauthenticate / CheckSession"]
+		BEACON["auth-beacon /Users CRUD<br/>Users / User/:id / Me/ChangePassword"]
+	end
+
+	APP -->|addProvider / addView| PROV
+	PROV -->|registers| CSS
+	VLOGIN -->|login| PROV
+	VCUR -->|logout / currentUser| PROV
+	VLIST -->|loadUsers / deleteUser / setUserPassword| PROV
+	VEDIT -->|createUser / updateUser| PROV
+	VPASS -->|changePassword| PROV
+	PROV -->|writes| APPDATA
+	VLOGIN -->|reads| APPDATA
+	VCUR -->|reads| APPDATA
+	VLIST -->|reads| APPDATA
+	VEDIT -->|reads| APPDATA
+	VLIST -.->|confirm / toast| MODAL
+	VEDIT -.->|toast| MODAL
+	PROV -->|fetch| AUTH
+	PROV -->|fetch| BEACON

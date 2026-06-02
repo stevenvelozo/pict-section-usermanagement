@@ -4,46 +4,8 @@ Pict Section UserManagement is a **provider + five views**. The provider (`Pict-
 
 ## Component Map
 
-```mermaid
-graph TB
-	subgraph "Host Pict Application"
-		APP["PictApplication"]
-		APPDATA["AppData.UserManagement<br/>(CurrentUser / AllUsers /<br/>SelectedUser / LastError / Loading)"]
-		MODAL["pict-section-modal<br/>(confirm / prompt / toast)"]
-	end
-
-	subgraph "pict-section-usermanagement"
-		PROV["Pict-Provider-UserManagement<br/>(extends pict-provider)"]
-		VLOGIN["Login view"]
-		VCUR["CurrentUser view"]
-		VLIST["UserList view"]
-		VEDIT["UserEdit view"]
-		VPASS["PasswordChange view"]
-		CSS["Shared CSS (.pict-um-*)"]
-	end
-
-	subgraph "Backend"
-		AUTH["orator-authentication<br/>Authenticate / Deauthenticate / CheckSession"]
-		BEACON["auth-beacon /Users CRUD<br/>Users / User/:id / Me/ChangePassword"]
-	end
-
-	APP -->|addProvider / addView| PROV
-	PROV -->|registers| CSS
-	VLOGIN -->|login| PROV
-	VCUR -->|logout / currentUser| PROV
-	VLIST -->|loadUsers / deleteUser / setUserPassword| PROV
-	VEDIT -->|createUser / updateUser| PROV
-	VPASS -->|changePassword| PROV
-	PROV -->|writes| APPDATA
-	VLOGIN -->|reads| APPDATA
-	VCUR -->|reads| APPDATA
-	VLIST -->|reads| APPDATA
-	VEDIT -->|reads| APPDATA
-	VLIST -.->|confirm / toast| MODAL
-	VEDIT -.->|toast| MODAL
-	PROV -->|fetch| AUTH
-	PROV -->|fetch| BEACON
-```
+<!-- bespoke diagram: edit diagrams/component-map.mmd or .hints.json, then: npx pict-renderer-graph build modules/pict/pict-section-usermanagement/docs -->
+![Component Map](diagrams/component-map.svg)
 
 ## Class Hierarchy
 
@@ -142,31 +104,8 @@ Every path is appended to `options.BaseURL` (default `/1.0/`). The provider send
 
 ## Login Request Flow
 
-```mermaid
-sequenceDiagram
-	participant User
-	participant View as Login view
-	participant Prov as Provider
-	participant API as Auth API
-	participant AD as AppData
-
-	User->>View: enter credentials + submit
-	View->>View: validate non-empty, set submitting
-	View->>Prov: login(username, password)
-	Prov->>AD: Loading.CurrentUser = true
-	Prov->>API: POST Authenticate { UserName, Password }
-	API-->>Prov: { LoggedIn, UserID, UserRecord }
-	alt LoggedIn = true
-		Prov->>AD: CurrentUser = body
-		Prov-->>View: callback(null, body)
-		View->>View: success message, clear password
-		View->>View: options.OnLogin(body)  [host hook]
-	else LoggedIn = false / error
-		Prov->>AD: LastError = {...}
-		Prov-->>View: callback(error)
-		View->>View: error message
-	end
-```
+<!-- bespoke diagram: edit diagrams/login-request-flow.mmd or .hints.json, then: npx pict-renderer-graph build modules/pict/pict-section-usermanagement/docs -->
+![Login Request Flow](diagrams/login-request-flow.svg)
 
 ## Transport Injection
 

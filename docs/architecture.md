@@ -127,25 +127,5 @@ These views were written against a backend that returns user-controlled strings 
 
 ## File Layout
 
-```
-pict-section-usermanagement/
-├── README.md
-├── package.json
-├── source/
-│   ├── Pict-Section-UserManagement.js          # entry point: named exports + install()
-│   ├── Pict-Provider-UserManagement.js         # REST provider + AppData writes
-│   ├── Pict-Provider-UserManagement-CSS.js     # shared .pict-um-* stylesheet
-│   └── views/
-│       ├── PictView-UserManagement-Login.js
-│       ├── PictView-UserManagement-CurrentUser.js
-│       ├── PictView-UserManagement-UserList.js
-│       ├── PictView-UserManagement-UserEdit.js
-│       └── PictView-UserManagement-PasswordChange.js
-├── example_applications/
-│   └── usermanagement_demo/                     # full demo + in-browser mock backend + smoke.js
-└── docs/
-    ├── README.md, _cover.md, _sidebar.md
-    ├── quickstart.md
-    ├── architecture.md
-    └── api-and-usage.md
-```
+<!-- bespoke diagram: edit diagrams/file-layout.mmd or .hints.json, then: npx pict-renderer-graph build modules/pict/pict-section-usermanagement/docs -->
+![File Layout](diagrams/file-layout.svg)

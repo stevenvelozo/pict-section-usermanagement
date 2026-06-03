@@ -17,7 +17,7 @@
 		"pict-view": "^1.0.64",
 		"pict-provider": "^1.0.3",
 		"pict-section-modal": "^1.0.0",
-		"pict-section-usermanagement": "file:../../"
+		"pict-section-usermanagement": "^1.0.1"
 	},
 	"devDependencies": {
 		"quackage": "^1.0.58"
